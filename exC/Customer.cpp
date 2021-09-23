@@ -1,12 +1,12 @@
-#include<Customer.h>
+#include"Customer.h"
     //getters
-    string Customer::getName() {
+    string Customer::getName() const {
         return name;
     }
-    string Customer::getPhone() {
+    string Customer::getPhone() const {
         return phone;
     }
-    string Customer::getAddress() {
+    string Customer::getAddress() const {
         return address;
     }
     //setters

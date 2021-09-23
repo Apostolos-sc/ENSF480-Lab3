@@ -21,20 +21,6 @@ class Company {
         vector<Employee> employees;
         string dateEstablished;
         vector<Customer> customers;
-    public:
-        //constructors
-        Company();
-        Company(string, string, string);
-        Company(string, string);
-        Company(const Company& source);
-        ~Company(); //destructor
-
-        //getters
-        string getName() const;
-        string getAddress() const;
-        string getDateEstablished() const;
-        vector<string> getEmployees() const;
-        
 };
 
 #endif

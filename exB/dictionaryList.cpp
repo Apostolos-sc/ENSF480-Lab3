@@ -191,9 +191,10 @@ void DictionaryList::destroy()
       }
       delete headM;
 
-      sizeM = 0;
   } 
+  sizeM = 0;
   headM = 0;
+  cursorM = 0;
 }
 
 

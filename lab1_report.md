@@ -25,6 +25,7 @@
 
 #### Code
 ```c++
+
 /*
  * File Name: dictionaryList.cpp
  * Assignment: Lab 1 Exercise B
@@ -205,7 +206,7 @@ void DictionaryList::find(const Key& keyA)
     for(p = headM; p != 0 && p -> keyM < keyA; p = p -> nextM)
         ;
     
-    cursorM = p != 0 && p -> keyM == keyA ? p : 0
+    cursorM = p != 0 && p -> keyM == keyA ? p : 0;
 }
 
 
@@ -218,9 +219,10 @@ void DictionaryList::destroy()
       }
       delete headM;
 
-      sizeM = 0;
   } 
+  sizeM = 0;
   headM = 0;
+  cursorM = 0;
 }
 
 
@@ -247,13 +249,15 @@ void DictionaryList::copy(const DictionaryList& source)
 
     assert(sizeM == source.size());
 }
+
+
 ```
+![output](img\exB_output.png)
 
 ### Exercise C
 
 #### Code 
 ```c++
-
 /*
  * File Name: Company.h
  * Assignment: Lab 1 Exercise C
@@ -277,20 +281,6 @@ class Company {
         vector<Employee> employees;
         string dateEstablished;
         vector<Customer> customers;
-    public:
-        //constructors
-        Company();
-        Company(string, string, string);
-        Company(string, string);
-        Company(const Company& source);
-        ~Company(); //destructor
-
-        //getters
-        string getName() const;
-        string getAddress() const;
-        string getDateEstablished() const;
-        vector<string> getEmployees() const;
-        
 };
 
 #endif
@@ -306,6 +296,7 @@ class Company {
 #define EMPLOYEE_H
 #include <string>
 using namespace std;
+
 enum EmployeeState {
     ACTIVE, SUSPENDED, RETIRED, FIRED
 };
@@ -316,19 +307,10 @@ class Employee {
         string address;
         EmployeeState state;
         friend class Company;
-    public:
-        Employee();
-        Employee(string, string, EmployeeState);
-        Employee(const Employee&);
-        ~Employee();
-        //getters
-        string getName() const;
-        string getAddress() const;
-        EmployeeState getEmployeeState() const;
-        //setters
 };
 
 #endif
+
 
 /*
  * File Name: Customer.h
@@ -348,19 +330,6 @@ class Customer{
         string address;
         friend class Company;
         friend class Employee;
-    public:
-        Customer();
-        Customer(string, string, string);
-        ~Customer();
-        //getters
-        string getName() const;
-        string getPhone() const;
-        string getAddress() const;
-        //setters
-        void setName(const string name);
-
-        void setAddress(const string address);
-        void setPhone(const string phone);
 };
 
 #endif

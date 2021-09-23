@@ -9,6 +9,7 @@
 #define EMPLOYEE_H
 #include <string>
 using namespace std;
+
 enum EmployeeState {
     ACTIVE, SUSPENDED, RETIRED, FIRED
 };
@@ -19,16 +20,6 @@ class Employee {
         string address;
         EmployeeState state;
         friend class Company;
-    public:
-        Employee();
-        Employee(string, string, EmployeeState);
-        Employee(const Employee&);
-        ~Employee();
-        //getters
-        string getName() const;
-        string getAddress() const;
-        EmployeeState getEmployeeState() const;
-        //setters
 };
 
 #endif
