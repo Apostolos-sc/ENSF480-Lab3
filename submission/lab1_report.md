@@ -414,7 +414,6 @@ class Human {
         char *name;     // Human's name
     public:
         //constructors
-        Human();
         Human(const Human&);
         Human(const char*);
         Human(const char *nam = "", const double x = 0, const double y = 0);
@@ -448,13 +447,6 @@ class Human {
 #include "Human.h"
 
 using namespace std;
-
-Human::Human() {
-    location.set_x(0);
-    location.set_y(0);
-    name = new char[1];
-    strcpy(this->name, "");
-}
 
 Human::Human(const Human& src): name(new char[strlen(src.get_name())] + 1) {
     strcpy(this -> name, src.get_name());

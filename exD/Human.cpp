@@ -11,13 +11,6 @@
 
 using namespace std;
 
-Human::Human() {
-    location.set_x(0);
-    location.set_y(0);
-    name = new char[1];
-    strcpy(this->name, "");
-}
-
 Human::Human(const Human& src): name(new char[strlen(src.get_name())] + 1) {
     strcpy(this -> name, src.get_name());
 

@@ -15,7 +15,6 @@ class Human {
         char *name;     // Human's name
     public:
         //constructors
-        Human();
         Human(const Human&);
         Human(const char*);
         Human(const char *nam = "", const double x = 0, const double y = 0);
