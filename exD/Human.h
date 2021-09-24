@@ -16,9 +16,11 @@ class Human {
     public:
         //constructors
         Human();
+        Human(const Human&);
         Human(const char*);
         Human(const char *nam = "", const double x = 0, const double y = 0);
         ~Human(); //destructor
+        Human& operator =(const Human&);
 
         //getters
         const char *get_name() const;

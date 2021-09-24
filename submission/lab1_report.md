@@ -12,7 +12,7 @@
 
 **Assignment Number:** Lab 1
 
-**Submission Date and Time:** 24/09/2021
+**Submission Date and Time:** 24/09/2021 - 12:00 p.m.
 
 ## Exercise Solutions
 
@@ -297,20 +297,20 @@ class Company {
 #include <string>
 using namespace std;
 
-enum EmployeeState {
-    ACTIVE, SUSPENDED, RETIRED, FIRED
-};
 
 class Employee {
+    enum State {
+        ACTIVE, SUSPENDED, RETIRED, FIRED
+    };
+
     private:
         string name;
         string address;
-        EmployeeState state;
+        State state;
         friend class Company;
 };
 
 #endif
-
 
 /*
  * File Name: Customer.h
@@ -326,7 +326,7 @@ using namespace std;
 class Customer{
     private:
         string name;
-        string  phone;
+        string phone;
         string address;
         friend class Company;
         friend class Employee;
@@ -397,7 +397,6 @@ void Point::set_y(const double a) {
     y = a;
 }
 
-
 /*
  * File Name: Human.h
  * Assignment: Lab 1 Exercise D
@@ -416,9 +415,11 @@ class Human {
     public:
         //constructors
         Human();
+        Human(const Human&);
         Human(const char*);
         Human(const char *nam = "", const double x = 0, const double y = 0);
         ~Human(); //destructor
+        Human& operator =(const Human&);
 
         //getters
         const char *get_name() const;
@@ -434,7 +435,6 @@ class Human {
 };
 
 #endif
-
 
 /*
  * File Name: Human.cpp
@@ -455,6 +455,15 @@ Human::Human() {
     name = new char[1];
     strcpy(this->name, "");
 }
+
+Human::Human(const Human& src): name(new char[strlen(src.get_name())] + 1) {
+    strcpy(this -> name, src.get_name());
+
+    const double x = src.get_point().get_x();
+    const double y = src.get_point().get_y();
+    location.set_x(x);
+    location.set_y(y);
+}
 Human::Human(const char * nam) {
     location.set_x(0);
     location.set_y(0);
@@ -468,8 +477,22 @@ Human::Human(const char *nam, const double a, const double b) {
     name = new char[strlen(nam) + 1];
     strcpy(this->name, nam);
 }
+
 Human::~Human() {
-    delete []name;
+    delete [] name;
+}
+
+Human& Human::operator=(const Human& src) {
+    delete [] name;
+    name = new char[strlen(src.get_name()) + 1];
+    strcpy(name, src.get_name());
+
+    const double x = src.get_point().get_x();
+    const double y = src.get_point().get_y();
+    location.set_x(x);
+    location.set_y(y);
+
+    return *this;
 }
 
 const char *Human::get_name() const { 
@@ -503,5 +526,4 @@ void Human::display()
         << location.get_y() << ".\n"
         << endl;
 }
-
 ```

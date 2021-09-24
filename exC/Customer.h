@@ -12,7 +12,7 @@ using namespace std;
 class Customer{
     private:
         string name;
-        string  phone;
+        string phone;
         string address;
         friend class Company;
         friend class Employee;

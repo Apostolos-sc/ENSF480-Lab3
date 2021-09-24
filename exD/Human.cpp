@@ -17,6 +17,15 @@ Human::Human() {
     name = new char[1];
     strcpy(this->name, "");
 }
+
+Human::Human(const Human& src): name(new char[strlen(src.get_name())] + 1) {
+    strcpy(this -> name, src.get_name());
+
+    const double x = src.get_point().get_x();
+    const double y = src.get_point().get_y();
+    location.set_x(x);
+    location.set_y(y);
+}
 Human::Human(const char * nam) {
     location.set_x(0);
     location.set_y(0);
@@ -30,8 +39,22 @@ Human::Human(const char *nam, const double a, const double b) {
     name = new char[strlen(nam) + 1];
     strcpy(this->name, nam);
 }
+
 Human::~Human() {
-    delete []name;
+    delete [] name;
+}
+
+Human& Human::operator=(const Human& src) {
+    delete [] name;
+    name = new char[strlen(src.get_name()) + 1];
+    strcpy(name, src.get_name());
+
+    const double x = src.get_point().get_x();
+    const double y = src.get_point().get_y();
+    location.set_x(x);
+    location.set_y(y);
+
+    return *this;
 }
 
 const char *Human::get_name() const { 

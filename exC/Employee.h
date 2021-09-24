@@ -10,15 +10,16 @@
 #include <string>
 using namespace std;
 
-enum EmployeeState {
-    ACTIVE, SUSPENDED, RETIRED, FIRED
-};
 
 class Employee {
+    enum State {
+        ACTIVE, SUSPENDED, RETIRED, FIRED
+    };
+
     private:
         string name;
         string address;
-        EmployeeState state;
+        State state;
         friend class Company;
 };
 
