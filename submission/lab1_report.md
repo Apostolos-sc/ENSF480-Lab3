@@ -519,3 +519,6 @@ void Human::display()
         << endl;
 }
 ```
+
+#### Output
+![exD output](img\exD_output.png)
